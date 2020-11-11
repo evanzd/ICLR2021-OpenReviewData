@@ -48,7 +48,7 @@ The word clouds formed by keywords of submissions show the hot topics including 
 
 **Ratings Distribution**
 
-The distribution of reviewer ratings centers around 4 (mean: 4.1837).
+The distribution of reviewer ratings centers around 5 (mean: 5.169).
 
 <p align="center">
     <img src="asset/ratings_dist.png" width="720"/>
@@ -56,7 +56,7 @@ The distribution of reviewer ratings centers around 4 (mean: 4.1837).
 
 **Keywords vs Ratings**
 
-The average reviewer ratings and the frequency of keywords indicate that to maximize your chance to get higher ratings would be using the keywords such as deep learning theory, or gradient descent.
+The average reviewer ratings and the frequency of keywords indicate that to maximize your chance to get higher ratings would be using the keywords such as *deep generative models*, or *normalizing flows*.
 
 <p align="center">
     <img src="asset/keyword_ratings.png" width="720"/>
