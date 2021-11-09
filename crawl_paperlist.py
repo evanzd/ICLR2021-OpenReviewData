@@ -15,7 +15,7 @@ WebDriverWait(driver, 60).until(cond)
 with open('paperlist.tsv', 'w', encoding='utf8') as f:
     f.write('\t'.join(['paper_id', 'title', 'link', 'keywords', 'abstract'])+'\n')
 
-for page in tqdm(range(1, 61)):
+for page in tqdm(range(1, 68)):
     text = ''
     elems = driver.find_elements_by_xpath('//*[@id="all-submissions"]/ul/li')
     for i, elem in enumerate(elems):

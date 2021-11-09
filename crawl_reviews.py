@@ -23,7 +23,7 @@ for paper_id, link in tqdm(list(df.link.items())):
         elems = driver.find_elements_by_xpath(xpath)
         assert len(elems), 'empty ratings'
         ratings[paper_id] = pd.Series([
-            int(x.text.split(': ')[1]) for x in elems if x.text.startswith('Rating:')
+            int(x.text.split(': ')[1]) for x in elems if x.text.startswith('Recommendation:')
         ], dtype=int)
         decision = [x.text.split(': ')[1] for x in elems if x.text.startswith('Decision:')]
         decisions[paper_id] = decision[0] if decision else 'Unknown'
