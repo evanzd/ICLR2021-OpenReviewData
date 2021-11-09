@@ -48,7 +48,7 @@ The word clouds formed by keywords of submissions show the hot topics including 
 
 **Ratings Distribution**
 
-The distribution of reviewer ratings centers around 5 (mean: 5.367).
+The distribution of reviewer ratings centers around 5 (mean: 4.917).
 
 <p align="center">
     <img src="asset/ratings_dist.png" width="720"/>
