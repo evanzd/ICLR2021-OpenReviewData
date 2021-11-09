@@ -8,6 +8,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 driver = webdriver.Edge('msedgedriver.exe')
 driver.get('https://openreview.net/group?id=ICLR.cc/2021/Conference')
+driver.get('https://openreview.net/group?id=ICLR.cc/2022/Conference')
 
 cond = EC.presence_of_element_located((By.XPATH, '//*[@id="all-submissions"]/nav/ul/li[13]/a'))
 WebDriverWait(driver, 60).until(cond)
