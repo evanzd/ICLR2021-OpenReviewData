@@ -2,12 +2,23 @@ import os
 import time
 from tqdm import tqdm
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-driver = webdriver.Edge('msedgedriver.exe')
-driver.get('https://openreview.net/group?id=ICLR.cc/2021/Conference')
+#driver = webdriver.Edge('msedgedriver.exe')
+s = Service(ChromeDriverManager().install())
+o =  webdriver.ChromeOptions()
+o.add_argument('headless')
+o.add_argument('--disable-infobars')
+o.add_argument('--disable-dev-shm-usage')
+o.add_argument('--no-sandbox')
+o.add_argument('--remote-debugging-port=9222')
+driver = webdriver.Chrome(service=s, options=o)
+
+driver.get('https://openreview.net/group?id=ICLR.cc/2022/Conference')
 
 cond = EC.presence_of_element_located((By.XPATH, '//*[@id="all-submissions"]/nav/ul/li[13]/a'))
 WebDriverWait(driver, 60).until(cond)
@@ -15,7 +26,7 @@ WebDriverWait(driver, 60).until(cond)
 with open('paperlist.tsv', 'w', encoding='utf8') as f:
     f.write('\t'.join(['paper_id', 'title', 'link', 'keywords', 'abstract'])+'\n')
 
-for page in tqdm(range(1, 61)):
+for page in tqdm(range(1, 68)):
     text = ''
     elems = driver.find_elements_by_xpath('//*[@id="all-submissions"]/ul/li')
     for i, elem in enumerate(elems):
