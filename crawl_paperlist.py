@@ -2,11 +2,22 @@ import os
 import time
 from tqdm import tqdm
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-driver = webdriver.Edge('msedgedriver.exe')
+#driver = webdriver.Edge('msedgedriver.exe')
+s = Service(ChromeDriverManager().install())
+o =  webdriver.ChromeOptions()
+o.add_argument('headless')
+o.add_argument('--disable-infobars')
+o.add_argument('--disable-dev-shm-usage')
+o.add_argument('--no-sandbox')
+o.add_argument('--remote-debugging-port=9222')
+driver = webdriver.Chrome(service=s, options=o)
+
 driver.get('https://openreview.net/group?id=ICLR.cc/2022/Conference')
 
 cond = EC.presence_of_element_located((By.XPATH, '//*[@id="all-submissions"]/nav/ul/li[13]/a'))

@@ -3,11 +3,21 @@ import time
 import pandas as pd
 from tqdm import tqdm
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-driver = webdriver.Edge('msedgedriver.exe')
+#driver = webdriver.Edge('msedgedriver.exe')
+s = Service(ChromeDriverManager().install())
+o =  webdriver.ChromeOptions()
+o.add_argument('headless')
+o.add_argument('--disable-infobars')
+o.add_argument('--disable-dev-shm-usage')
+o.add_argument('--no-sandbox')
+o.add_argument('--remote-debugging-port=9222')
+driver = webdriver.Chrome(service=s, options=o)
 
 df = pd.read_csv('paperlist.tsv', sep='\t', index_col=0)
 
